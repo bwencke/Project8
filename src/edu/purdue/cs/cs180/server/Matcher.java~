@@ -1,0 +1,27 @@
+package edu.purdue.cs.cs180.server;
+
+import edu.purdue.cs.cs180.channel.*;
+
+public class Matcher extends Thread {
+ private long sleepTime;
+ private DataFeeder feeder;
+ private String matchingType;
+ private Channel channel;
+ 
+ public Matcher(DataFeeder f, long sleep, String matchingType, Channel channel) {
+   sleepTime = sleep;
+   feeder = f;
+   this.matchingType = matchingType;
+   this.channel = channel;
+ }
+ 
+ @Override
+ public void run() {
+   
+   try{
+     sleep(sleepTime);
+   }catch(Exception e){
+     
+   }
+ }
+}
