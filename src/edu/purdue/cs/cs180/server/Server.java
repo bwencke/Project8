@@ -24,10 +24,15 @@ public class Server implements MessageListener {
     Message message = new Message(messageString, clientID);
     
     synchronized(data){
-      if(message.getType().equals("Request")){
-        data.addRequest(message);
-      }else if(message.getType().equals("Response")){
-        data.addResponse(message);
+      switch(message.getType())){
+        case Request:
+          data.addRequest(message);
+          break;
+        case Response:
+          data.addResponse(message);
+          break;
+        default:
+          System.out.println("Unknown message type.");
       }
     }
     
