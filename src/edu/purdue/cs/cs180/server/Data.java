@@ -6,7 +6,7 @@ import edu.purdue.cs.cs180.common.*;
  * Project 8 -- SafeWalk 3.0
  * holds the lists of responders and receivers and allows the Listener and Matcher threads to access and modify the lists
  * 
- * @author Ben Wencke
+ * @author Curtis SerVaas
  * 
  * @recitation RM5 (Julian Stephen)
  * 
