@@ -18,6 +18,8 @@ public class Matcher extends Thread {
   
   @Override
   public void run() {
+    System.out.println("Checking for matches...");
+    
     while(true){
       while (feeder.hasNextResponse() && feeder.hasNextRequest()){
         synchronized(feeder){
@@ -30,6 +32,8 @@ public class Matcher extends Thread {
             messageSender(feeder.getLastResponse(),feeder.getLastRequest());
             feeder.removeLastResponse();
             feeder.removeLastRequest();
+          }else{
+            System.out.println("unknown mode!!!");
           }
         }
       }
