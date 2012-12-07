@@ -24,7 +24,7 @@ public class Server implements MessageListener {
     Message message = new Message(messageString, clientID);
     
     synchronized(data){
-      switch(message.getType())){
+      switch(message.getType()){
         case Request:
           data.addRequest(message);
           break;
