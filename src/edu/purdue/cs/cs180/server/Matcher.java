@@ -18,25 +18,27 @@ public class Matcher extends Thread {
   
   @Override
   public void run() {
-    while (feeder.hasNextResponse() && feeder.hasNextRequest()){
-      synchronized(feeder){
-        if (matchingType.equalsIgnoreCase("FCSC")){
-          messageSender(feeder.getFirstResponse(),feeder.getFirstRequest());
-          feeder.removeFirstResponse();
-          feeder.removeFirstRequest();
-          
-        }else if (matchingType.equalsIgnoreCase("mostRecent")){
-          messageSender(feeder.getLastResponse(),feeder.getLastRequest());
-          feeder.removeLastResponse();
-          feeder.removeLastRequest();
+    while(true){
+      while (feeder.hasNextResponse() && feeder.hasNextRequest()){
+        synchronized(feeder){
+          if (matchingType.equalsIgnoreCase("FCSC")){
+            messageSender(feeder.getFirstResponse(),feeder.getFirstRequest());
+            feeder.removeFirstResponse();
+            feeder.removeFirstRequest();
+            
+          }else if (matchingType.equalsIgnoreCase("mostRecent")){
+            messageSender(feeder.getLastResponse(),feeder.getLastRequest());
+            feeder.removeLastResponse();
+            feeder.removeLastRequest();
+          }
         }
       }
-    }
-    
-    try{
-      sleep(sleepTime);
-    }catch(Exception e){
-      //needs catch code
+      
+      try{
+        sleep(sleepTime);
+      }catch(Exception e){
+        //needs catch code
+      }
     }
   }
   
