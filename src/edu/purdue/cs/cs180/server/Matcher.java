@@ -35,7 +35,7 @@ public class Matcher extends Thread {
     while(true){ // run indefinitely
       while (feeder.hasNextResponse() && feeder.hasNextRequest()){ // check if there are requesters AND responders waiting and continue matching until no matches exist
         synchronized(feeder){ // synchronize access to the data feeder
-          if (matchingType.equalsIgnoreCase("FCSC")){ // first-come, first-serve
+          if (matchingType.equalsIgnoreCase("FCFS")){ // first-come, first-serve
             messageSender(feeder.getFirstResponse(),feeder.getFirstRequest()); // send messages to clients
             feeder.removeFirstResponse(); // remove matched participants
             feeder.removeFirstRequest();
